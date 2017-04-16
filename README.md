@@ -7,7 +7,7 @@ This was project was made for our "OOP with Java Course" in 4th Semester of Our 
 
 ### Tech
 
-While making RoboVac project we used a number of software/technologies.
+While making this project we used a number of software/technologies.
 * [Java Language](https://en.wikipedia.org/wiki/Java_(programming_language))
 * Eclipse
 * Tomcat
