@@ -5,6 +5,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
+	z-index: 2;
 }
 html {
 	font-size: 62.5%;
@@ -17,6 +18,75 @@ body {
 	color: #222;
 	margin: 0;
 }
+
+/*-------- Generic styles for the page ------------------*/
+section {
+	display: relative;
+	padding: 0px 8px;
+}
+.footer {
+	position: fixed;
+	height: 300px;	
+	width: 100%;	
+	bottom: 0;
+	background-color: #222;
+	color: #fff;
+	z-index: -999;
+	margin: 0 auto;
+}
+.text-center {
+	text-align:center;
+}
+.top-space{
+	margin-top: 50px;
+}
+.bottom-space{
+	padding-bottom: 100px;
+}
+#login{
+	background-color: #aaa;
+	color: white;
+	padding: 60px;
+}
+#main-container{
+	width: 100%;
+	z-index: 1;	
+	background-color: #fff;
+	margin-bottom: 300px;
+}
+.col-1 {
+	width: 80%;
+	margin: 0 auto;    
+}
+.col-2 {
+	width: 40%;
+	float: left;
+	margin: 0 auto;
+	padding:60px;
+}
+.col-4 {
+	width: 25%;
+	float: left;
+	margin: 0 auto;
+}
+
+.col-4 > label {
+margin-top: 1rem;
+}	
+
+.col-a {
+	width: 60%;
+	float: left;
+	margin: 0 auto;
+}
+
+
+
+form{
+	width: 600px;
+	margin: 0 auto;
+}
+
 
 /* Typography –––––––––––––––––––––––––––––––––––––––––––––––––– */
 h1, h2, h3, h4, h5, h6 {
@@ -41,26 +111,196 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
   h6 { font-size: 1.5rem; }
 }
 
-p {
-  margin-top: 0; }
+p { margin-top: 0; }
 
-/* Lists
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-ul {
-  list-style: circle inside; }
-ol {
-  list-style: decimal inside; }
+/* Lists –––––––––––––––––––––––––––––––––––––––––––––––––– */
+ul { list-style: circle inside; }
+ol { list-style: decimal inside; }
 ol, ul {
-  padding-left: 0;
-  margin-top: 0; }
+	padding-left: 0;
+	margin-top: 0; }
 ul ul,
 ul ol,
 ol ol,
 ol ul {
-  margin: 1.5rem 0 1.5rem 3rem;
-  font-size: 90%; }
-li {
+	margin: 1.5rem 0 1.5rem 3rem;
+	font-size: 90%; }
+li { margin-bottom: 1rem; }
+
+/* Spacing –––––––––––––––––––––––––––––––––––––––––––––––––– */
+button,
+.button {
   margin-bottom: 1rem; }
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: 1.5rem; }
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+  margin-bottom: 2.5rem; }
+
+/* Buttons –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: #555;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box; }
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  color: #FFF;
+  background-color: #33C3F0;
+  border-color: #33C3F0; }
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+  color: #FFF;
+  background-color: #1EAEDB;
+  border-color: #1EAEDB; }
+
+
+/* Forms
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #33C3F0;
+  outline: 0; }
+label,
+legend {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600; }
+fieldset {
+  padding: 0;
+  border-width: 0; }
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline; }
+label > .label-body {
+  display: inline-block;
+  margin-left: .5rem;
+  font-weight: normal; }
+
+/* Tables –––––––––––––––––––––––––––––––––––––––––––––––––– */
+table {
+    border-collapse: collapse;
+	border: 0px;
+}
+
+th,td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+tr:hover{
+    background-color: #F0595C;	
+}
+
+th {
+    background-color: #222;
+    color: white;
+}
+
+.noMargin {
+	margin: 0;
+} 
+
+.tableButton{
+	position: absolute;
+	left: 500px;
+}
+
+.table-form {
+	width: 300px;
+}
 
 /* ---------------- For sticky header: class="float-panel"  ------------------*/
 .float-panel {
@@ -139,25 +379,6 @@ li {
 		opacity: 1;
 		transform: translateY(0);
 	} 
-}
-
-
-/*-------- Generic styles for the page ------------------*/
-
-footer {
-	display:block;
-	background-color: #222;
-	padding:30px;
-}
-
-section {
-	display:block;
-	padding:35px 8px;
-}
-
-
-.text-center {
-	text-align:center;
 }
 
 
@@ -248,16 +469,10 @@ section {
 @media (max-width: 9000px) {
 	#rig li {width:25%;}
 }
-#main-container{
-	width: 100%;
-}
-.col-1 {
-	width: 80%;
-	margin: 0 auto;    
-}
+
 .slider {
 	width: 90%;
-	margin: 0px auto;
+	margin: 30px auto;
 }
 .slick-slide {
 	margin: 0px auto;
@@ -270,12 +485,13 @@ section {
 	color: black;
 }
 .slick-dotted.slick-slider {
-	margin-bottom: 0px;
+	margin-bottom: 30px;
 }
 .slick-dots {
 	width: 100%;
-	margin: 0 auto;
+	margin: 40px auto;	
 }
-.top-space{
-	margin-top: 50px;
+
+.regular {
+	margin-top: 0px;
 }
