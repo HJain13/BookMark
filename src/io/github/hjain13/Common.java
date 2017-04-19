@@ -17,6 +17,8 @@ public class Common {
 				+ "drop table if exists test;" 
 				+ "drop table if exists authors;"
 				+ "drop table if exists edChoice;"				
+				+ "drop table if exists suggestion;"	
+				+ "create table suggestion(username varchar(50),suggestion varchar(100));"				
 				+ "create table authors("
 				+ "    name char(50) primary key);"
 				+ "create table edChoice("
@@ -58,7 +60,7 @@ public class Common {
 				+ "    comment char(200),"
 				+ "    rate integer,"
 				+ "    fb_date date,"
-				+ "    foreign key (ISBN) references book(ISBN),"
+				+ "    foreign key (ISBN) references book(ISBN) on delete cascade,"
 				+ "    foreign key (cid) references customer(cid) on delete cascade);              "
 				+ "create table feedback_rate (" + "    fid integer,"
 				+ "    cid integer," + "    fb_rate integer,"
@@ -85,12 +87,12 @@ public class Common {
 		Feedback_Rate feedback_rates = new Feedback_Rate();
 		Customer_Rate customer_rates = new Customer_Rate();
 
-		books.initBook(stmt);
-		customers.initCustomer(stmt);
-		orders.initOrders(stmt);
-		feedbacks.initFeedback(stmt);
-		feedback_rates.initFeedback_Rate(stmt);
-		customer_rates.initCustomer_Rate(stmt);
+		books.init(stmt);
+		customers.init(stmt);
+		orders.init(stmt);
+		feedbacks.init(stmt);
+		feedback_rates.init(stmt);
+		customer_rates.init(stmt);
 
 	}
 
@@ -285,7 +287,7 @@ public class Common {
 
 	public ResultSet suggestVisitor(Statement stmt) throws Exception {
 
-		String query = "select * from book order by book.author;";
+		String query = "select * from book order by author;";
 		ResultSet results;
 		System.out.println(query);
 		try {
@@ -297,6 +299,21 @@ public class Common {
 		}
 		return results;
 	}	
+
+	public ResultSet suggestions(Statement stmt) throws Exception {
+
+		String query = "select * from suggestion;";
+		ResultSet results;
+		System.out.println(query);
+		try {
+			results = stmt.executeQuery(query);
+		} catch (Exception e) {
+			System.err.println("Unable to execute query:" + query + "\n");
+			System.err.println(e.getMessage());
+			throw (e);
+		}
+		return results;
+	}
 	
 
 	public String degree(String author1, String author2, Statement stmt)
