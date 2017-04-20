@@ -7,11 +7,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>BookMark | Online Book Store</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="slick/slick.css">
-	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css">    
-	<link rel="stylesheet" href="base.css">
+	<link rel="stylesheet" type="text/css" href="../slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="../slick/slick-theme.css">    
+	<link rel="stylesheet" href="../base.css">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script src="resources/js/float-panel.js"></script>	
+    <script src="../resources/js/float-panel.js"></script>	
 </head>
 <body>
 	<%
@@ -42,8 +42,20 @@
 		io.github.hjain13.Common com = new Common();
 		io.github.hjain13.Customer_Rate customer_rates = new Customer_Rate();
 
-		int cid = customers.getCid(name_q, con.stmt);
-
+		ResultSet results;
+		String[] sigmaAttr = { "login_name" }, sigmaValue = { name_q };
+		results = customers.showCustomer(sigmaAttr, sigmaValue, con.stmt);
+		int cid = 0, ptype = 0, type = 0;
+		String fullName = "", address = "";
+		if (results.next()) {
+			cid = results.getInt("cid");
+			ptype = results.getInt("plan");
+			fullName = results.getString("full_name");
+			address = results.getString("address");
+			type = results.getInt("type");
+		}			
+		
+		
 		String _trust = (String)request.getParameter("_trust");
 		if (_trust != null && !_trust.equals("null")) {
 			String _name = (String)request.getParameter("_name");
@@ -65,22 +77,25 @@
 				</a>
 				<a href="browsebook.jsp"><i class="fa fa-search"></i></a>
 				<a href="user.jsp">Users</a>
-				<% if(name.equals("root")){ %>		
-				<a href="newbook.jsp">New Books</a>	
-				<% } %>
-				<a>Welcome, <%=name%></a>
+				<% if(type >= 1){ %>		
+				<a href="bookKeeping.jsp">Book Mgmt</a>	
+				<% } %>				
+				<% if(type == 2){ %>		
+				<a href="admin.jsp">User Mgmt</a>	
+				<% } %>				
+				<a href="profile.jsp">Welcome, <%=name%></a>
 				<a href="orders.jsp"><i class="fa fa-shopping-cart"></i></a>											
 				<a id="logout">Logout</a>&nbsp; 
 			</div>
 		</div>
-	</nav>	
+	</nav>		
 	<script type="text/javascript">
 		$("#logout").click(function(e) {
 			document.cookie = "loginname=";
 			location.href="index.jsp";
 		});
 	</script>
-	<div id="main-container" class="top-space">
+	<div id="main-container" class="top-space bottom-space">
 		<div class="col-1">
 			<h3>All Users : </h3>
 			<table border="1">
@@ -93,7 +108,6 @@
 				</thead>
 				<tbody>
 			<%
-				ResultSet results;
 				results = customer_rates.showCustomer_Rate(cid, con.stmt);
 				while (results.next()) {
 			%>
@@ -123,7 +137,7 @@
 			<hr/>
 			<br/>
 			<h3>Most Trusted User : </h3>
-			<table border="1">
+			<table>
 				<tr>
 					<th>&nbsp;Customer&nbsp;</th>
 					<th>&nbsp;Trust Score&nbsp;</th>
@@ -144,7 +158,7 @@
 			<hr/>
 			<br/>
 			<h3>Most Useful User : </h3>
-			<table border="1">
+			<table>
 				<tr>
 					<th>&nbsp;Customer&nbsp;</th>
 					<th>&nbsp;Useful Score&nbsp;</th>
@@ -162,5 +176,16 @@
 			<%	con.closeConnection();	%>
 		</div>
 	</div>
+	<div class="footer">
+		<div class="col-2">
+			<h4>About US</h4>
+			<p>The BookKeepers </p>
+			<p>Mail : example@example.com </p>
+		</div>
+		<div class="col-2">
+			<h4>About Website</h4>
+			<p>BUILT FOR ALL FUNCTIONALITY !! </p>
+		</div>
+	</div>		
 </body>
 </html>

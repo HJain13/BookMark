@@ -22,12 +22,13 @@
 		String fullname = (String)request.getParameter("fullname_r");
 		String address = (String)request.getParameter("address_r");
 		String phone = (String)request.getParameter("phone_r");
-		String[] attrValue = new String[] {loginname, password, fullname, address, phone};
-		customers.newCustomer(attrValue, con.stmt);
+		String plan = request.getParameter("plan");
+		String[] attrValue = new String[] {loginname, password, fullname, address, phone, plan, "0"};
+		customers.newEntry(attrValue, con.stmt);
 	%>
 	<script type="text/javascript">alert("Register Successful !!");</script>	
 	<% } %>
 	<% con.closeConnection(); %>
-	<script type="text/javascript">location.href = "index.jsp";</script>
+	<script type="text/javascript">location.href = "../index.jsp";</script>
 </body>
 </html>
