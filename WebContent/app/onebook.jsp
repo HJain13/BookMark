@@ -121,7 +121,7 @@
 				<%
 					String emptyQuery = " ISBN = " + (String)request.getParameter("ISBN") + " ";
 					results = books.browseEntry(emptyQuery, 4, name_q, con.stmt);
-					int maxCopies = 0;
+					int maxCopies = 0, bplan = -9;
 					if (results.next()) {
 				%>
 				<tr>
@@ -140,14 +140,28 @@
 				</tr>
 				<%
 					maxCopies = results.getInt("copies");
+					bplan = results.getInt("plan");				
 					}
 				%>
 				
 			</table>
 			<br/>
 			<hr/>
-			<br/>
-	
+			<br/><br/>
+			<%if(ptype>=bplan){ %>
+			<div class="col-4">
+			<p>Congratulations this book is available in your plan!! You can read it online.</p>
+			</div>
+			<div class="col-10">
+			<a href="#"><button type="submit">Open</button></a>
+			</div>
+			<br/><br/><br/><br/><br/><br/><br/><hr>	
+		<%} else{%>
+			<div class="col-1">
+			<p>Sorry!! This book is not available in you. You can't read it online.</p>
+			</div>
+			<br/><hr>
+			<%} %>				
 			<h3>New Order : </h3>
 			<form action="orders.jsp" method="post">
 				<input type="hidden" name="ISBN" value=<%=ISBN%> />

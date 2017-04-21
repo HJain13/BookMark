@@ -96,7 +96,7 @@ public class Book implements basic {
 
 	public ResultSet browseEntry(String queryStmt, int sortType, String name, Statement stmt) throws Exception {
 		String query;
-		query = "select book.ISBN as ISBN, title, author, publisher, publish_year, copies, price, format, keywords,"
+		query = "select book.ISBN as ISBN, title, author, publisher, publish_year, copies, price, format, plan, keywords,"
 				+ "subject, t1.avg_rate as rate, t2.avg_rate as trust_rate "
 				+ "from book left join ("
 				+ "		select b.ISBN as ISBN1, avg(f.rate) as avg_rate "

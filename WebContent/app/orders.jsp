@@ -86,15 +86,15 @@
 	<nav>
 		<div class="float-panel" data-top="0" data-scroll="500">
 			<div style="text-align:right;max-width:1360px;margin:0 auto;">
-				<a href="home.jsp" style="float:left;">
+				<a href="#" style="float:left;">
 					<i class="fa f fa-bookmark-o"></i>&nbsp;
 					<em style="font:bold 20px Segoe UI;letter-spacing:1px;">BookMark</em>
 				</a>
 				<a href="browsebook.jsp"><i class="fa fa-search"></i></a>
 				<a href="user.jsp">Users</a>
 				<% if(type >= 1){ %>		
-				<a href="newbook.jsp">New Books</a>	
-				<% } %>
+				<a href="bookKeeping.jsp">Book Mgmt</a>	
+				<% } %>				
 				<% if(type == 2){ %>		
 				<a href="admin.jsp">User Mgmt</a>	
 				<% } %>				
@@ -103,7 +103,7 @@
 				<a id="logout">Logout</a>&nbsp; 
 			</div>
 		</div>
-	</nav>	
+	</nav>
 	<script type="text/javascript">
 		$("#logout").click(function(e) {
 			document.cookie = "loginname=";

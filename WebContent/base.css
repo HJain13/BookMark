@@ -29,7 +29,8 @@ section {
 	height: 300px;	
 	width: 100%;	
 	bottom: 0;
-	background-color: #222;
+	background: #c0392b;
+	background: linear-gradient(to right, #8e44ad, #c0392b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	color: #fff;
 	z-index: -999;
 	margin: 0 auto;
@@ -68,6 +69,13 @@ section {
 	width: 25%;
 	float: left;
 	margin: 0 auto;
+	margin-left:10px;	
+}
+.col-10 {
+	width: 10%;
+	float: left;
+	margin: 0 auto;
+	margin-left:10px;
 }
 
 .col-4 > label {
@@ -189,8 +197,8 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
   color: #FFF;
-  background-color: #33C3F0;
-  border-color: #33C3F0; }
+  background-color: #8e44ad;
+  border-color: #8e44ad; }
 .button.button-primary:hover,
 button.button-primary:hover,
 input[type="submit"].button-primary:hover,
@@ -202,8 +210,8 @@ input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   color: #FFF;
-  background-color: #1EAEDB;
-  border-color: #1EAEDB; }
+  background-color: #9f55be;
+  border-color: #8e44ad; }
 
 
 /* Forms
@@ -249,7 +257,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33C3F0;
+  border: 1px solid #8e44ad;
   outline: 0; }
 label,
 legend {
@@ -281,7 +289,7 @@ th,td {
 tr:nth-child(even){background-color: #f2f2f2}
 
 tr:hover{
-    background-color: #F0595C;	
+    background-color: #fced83;	
 }
 
 th {

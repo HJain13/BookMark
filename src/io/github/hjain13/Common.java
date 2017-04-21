@@ -86,6 +86,7 @@ public class Common {
 		Feedback feedbacks = new Feedback();
 		Feedback_Rate feedback_rates = new Feedback_Rate();
 		Customer_Rate customer_rates = new Customer_Rate();
+		Suggestion suggest=new Suggestion();
 
 		books.init(stmt);
 		customers.init(stmt);
@@ -93,7 +94,7 @@ public class Common {
 		feedbacks.init(stmt);
 		feedback_rates.init(stmt);
 		customer_rates.init(stmt);
-
+		suggest.init(stmt);
 	}
 
 	public void display() {
